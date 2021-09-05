@@ -1,14 +1,21 @@
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import React from "react";
 import Card from "../UI/Card";
 import styles from './UsersList.module.css';
 
 const UserList = props => {
     return (
-        <Card className={styles.users}>
-            <ul>
-                {props.users.map(user => <li key={user.id}>{user.name} ({user.age} Years Old)</li>)}
-            </ul>
-        </Card>
+        <div>
+            {props.users.map(user => (
+                <Card className={styles.users} key={user.id}>
+                    <List>
+                        <ListItem button>
+                            <ListItemText primary={`${user.name} (${user.age} Years Old)`} />
+                        </ListItem>
+                    </List>
+                </Card>
+            ))}
+        </div>
     );
 };
 

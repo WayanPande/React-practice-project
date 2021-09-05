@@ -1,3 +1,4 @@
+import { TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
@@ -51,12 +52,10 @@ const AddUser = props => {
         <div>
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={styles.input}>
-                <form onSubmit={addUserHandler}>
-                    <label htmlFor='username'>Username</label>
-                    <input id='username' type='text' onChange={usernameChangeHandler} value={enteredUsername} />
-                    <label htmlFor='age'>Age (Years)</label>
-                    <input id='age' type='number' onChange={ageChangeHandler} value={enteredAge} />
-                    <Button type='submit'>Add User</Button>
+                <form onSubmit={addUserHandler} className={styles.form}>
+                    <TextField id="username" label="username" variant="outlined" onChange={usernameChangeHandler} value={enteredUsername} />
+                    <TextField id="age" label="age" variant="outlined" onChange={ageChangeHandler} value={enteredAge} className={styles.margin} />
+                    <Button type='submit' className={styles.btn}>Add User</Button>
                 </form>
             </Card>
         </div>
